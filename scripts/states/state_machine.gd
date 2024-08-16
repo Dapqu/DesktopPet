@@ -18,7 +18,7 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
-			child.transitioned.connect(on_child_transition)
+			child.transitioned.connect(_on_child_transition)
 	
 	# Enter the initial state if it's set
 	if initial_state:
@@ -40,7 +40,7 @@ func _physics_process(delta):
 
 ## Handles state transitions when a state emits a transition signal.
 ## The state machine will switch to the new state specified by the signal.
-func on_child_transition(state, new_state_name) -> void:
+func _on_child_transition(state, new_state_name) -> void:
 	# Only handle the transition if it originates from the current active state
 	if state != current_state:
 		return

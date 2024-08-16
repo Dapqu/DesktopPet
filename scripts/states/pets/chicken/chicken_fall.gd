@@ -54,16 +54,22 @@ func update(delta: float) -> void:
 
 ## Applies gravity, horizontal movement, and checks for landing.
 func physics_update(delta: float) -> void:
-	# Apply horizontal movement based on the randomized direction and speed.
+	# Apply horizontal movement based on the randomized direction and speed
 	chicken.velocity.x = move_direction * move_speed
 	
 	boundary()
 	
-	# Apply gravity and check if the chicken has landed on the ground.
+	# Apply gravity and check if the chicken has landed on the ground
 	if chicken.global_position.y >= 1200:
 		chicken.global_position.y = 1200
-		chicken.velocity.y = 0
-		transitioned.emit(self, "ChickenRoam")
+		chicken.velocity = Vector2.ZERO
+		
+		visual.play("chicken_land")
 	else:
 		chicken.velocity.y += GRAVITY * delta
 		visual.play("chicken_fall")
+
+
+## Transitions to the ChickenRoam state when the chicken finishes landing animation.
+func _on_visual_animation_finished():
+	transitioned.emit(self, "ChickenRoam")
