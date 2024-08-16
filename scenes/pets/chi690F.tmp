@@ -137,9 +137,10 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Chicken" type="CharacterBody2D" node_paths=PackedStringArray("collision_polygon_2d")]
+[node name="Chicken" type="CharacterBody2D" node_paths=PackedStringArray("collision_polygon_2d", "visual")]
 script = ExtResource("1_vvyqu")
 collision_polygon_2d = NodePath("CollisionPolygon2D")
+visual = NodePath("Visual")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_te4kr")
