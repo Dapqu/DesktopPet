@@ -228,9 +228,10 @@ script = ExtResource("4_3eh6a")
 chicken = NodePath("../..")
 visual = NodePath("../../Visual")
 
-[node name="ChickenDrag" type="Node" parent="StateMachine" node_paths=PackedStringArray("chicken", "visual")]
+[node name="ChickenDrag" type="Node" parent="StateMachine" node_paths=PackedStringArray("chicken", "visible_clickable_area", "visual")]
 script = ExtResource("5_qhtcn")
 chicken = NodePath("../..")
+visible_clickable_area = NodePath("../../VisibleClickableArea")
 visual = NodePath("../../Visual")
 
 [node name="MouseArea" type="Area2D" parent="."]
@@ -242,8 +243,7 @@ shape = SubResource("CircleShape2D_dvgvl")
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_b8yyq")
-animation = &"chicken_fright"
-frame_progress = 0.857508
+animation = &"chicken_run"
 
 [node name="VisibleClickableArea" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(12, 0, 12, -22, -12, -22, -12, 0)
