@@ -44,7 +44,7 @@ func physics_update(_delta: float) -> void:
 		visual.play("chicken_run")
 		
 		# Transition back to ChickenRoam if the mouse is far enough away
-		if direction.length() > 300:
+		if direction.length() > 500:
 			transitioned.emit(self, "ChickenRoam")
 
 

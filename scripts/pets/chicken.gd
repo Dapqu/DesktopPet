@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var visible_clickable_area: CollisionPolygon2D
 @export var visual: AnimatedSprite2D
 
+
 ## Called every physics frame to update the chicken's movement and interactions.
 func _physics_process(_delta):
 	# Flip the sprite based on the direction of movement

@@ -51,18 +51,23 @@ func physics_update(_delta: float) -> void:
 			# Expand the VisibleClickableArea for a smoother dragging feel
 			visible_clickable_area.polygon = expand_polygon(visible_clickable_area.polygon)
 			
+			chicken.velocity = Vector2.ZERO
 			# Maintain the mouse offset for a better click and drag effect
 			mouse_offset = get_viewport().get_mouse_position() - chicken.global_position
 		
 		# Continue dragging while the mouse button is held down
 		if Input.is_action_pressed("left_mouse_button"):
+			chicken.velocity = Vector2.ZERO
 			chicken.global_position = get_viewport().get_mouse_position() - mouse_offset
 		# Release dragging and restore original clickable area on mouse release
 		elif Input.is_action_just_released("left_mouse_button"):
 			visible_clickable_area.polygon = original_points
+			
+			if chicken.global_position.y < 720:
+				transitioned.emit(self, "ChickenFall")
 		
-		# Stop any movement of the chicken during this state
-		chicken.velocity = Vector2.ZERO
+		# Stop any horizontal movement of the chicken during this state
+		chicken.velocity.x = 0
 		
 		visual.play("chicken_fright")
 
