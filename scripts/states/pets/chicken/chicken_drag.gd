@@ -63,7 +63,7 @@ func physics_update(_delta: float) -> void:
 		elif Input.is_action_just_released("left_mouse_button"):
 			visible_clickable_area.polygon = original_points
 			
-			if chicken.global_position.y < 720:
+			if chicken.global_position.y < 1200:
 				transitioned.emit(self, "ChickenFall")
 		
 		# Stop any horizontal movement of the chicken during this state

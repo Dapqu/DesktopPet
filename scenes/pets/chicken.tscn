@@ -284,7 +284,7 @@ shape = SubResource("CircleShape2D_dvgvl")
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_b8yyq")
 animation = &"chicken_fall"
-frame_progress = 0.0869009
+frame_progress = 0.874137
 
 [node name="VisibleClickableArea" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(12, 0, 12, -22, -12, -22, -12, 0)

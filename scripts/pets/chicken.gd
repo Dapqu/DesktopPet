@@ -20,6 +20,11 @@ func _physics_process(_delta):
 	# Move the chicken and handle collisions
 	move_and_slide()
 	
+	# Makes sure the chicken is always on the ground
+	# TODO: maybe make it so that player can't even drag the chicken below floor level
+	if global_position.y >= 1200:
+		global_position.y = 1200
+	
 	# Update the clickable area after movement
 	update_click_polygon()
 

@@ -7,5 +7,5 @@
 script = ExtResource("1_xkk25")
 
 [node name="Chicken" parent="." instance=ExtResource("3_im0wc")]
-position = Vector2(1275, 720)
+position = Vector2(1280, 1200)
 scale = Vector2(5, 5)
