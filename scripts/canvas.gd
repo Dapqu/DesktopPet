@@ -15,7 +15,7 @@ func _ready():
 ## This function configures the window size and position, allowing the application 
 ## to have a transparent window by adjusting the viewport dimensions.
 func initialize_window() -> void:
-	var window := get_window()
+	var window: Window = get_window()
 	
 	window.size = Vector2i(DisplayServer.screen_get_size() + Vector2i(1, 1))
 	window.position = Vector2i(0, 0)
