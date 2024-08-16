@@ -54,6 +54,8 @@ func physics_update(_delta: float) -> void:
 			chicken.velocity = Vector2.ZERO
 			# Maintain the mouse offset for a better click and drag effect
 			mouse_offset = get_viewport().get_mouse_position() - chicken.global_position
+		elif Input.is_action_just_pressed("right_mouse_button"):
+			transitioned.emit(self, "ChickenSit")
 		
 		# Continue dragging while the mouse button is held down
 		if Input.is_action_pressed("left_mouse_button"):

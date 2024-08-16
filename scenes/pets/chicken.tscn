@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cbd1iqyawr1pg"]
+[gd_scene load_steps=54 format=3 uid="uid://cbd1iqyawr1pg"]
 
 [ext_resource type="Texture2D" uid="uid://btcws26ptwhhc" path="res://assets/chicken/chicken_walk_strip8.png" id="1_b1kxe"]
 [ext_resource type="Script" path="res://scripts/pets/chicken.gd" id="1_vvyqu"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" path="res://scripts/states/pets/chicken/chicken_fall.gd" id="6_mj5gb"]
 [ext_resource type="Texture2D" uid="uid://dg8hnqfb1d4e0" path="res://assets/chicken/chicken_fright_strip5.png" id="6_rw4fr"]
 [ext_resource type="Texture2D" uid="uid://27dw5mimfb5h" path="res://assets/chicken/chicken_run_strip4.png" id="7_7ume2"]
+[ext_resource type="Script" path="res://scripts/states/pets/chicken/chicken_sit.gd" id="7_v4h6b"]
 [ext_resource type="Texture2D" uid="uid://c7brp1t3qvdr2" path="res://assets/chicken/chicken_land_strip4.png" id="11_0d4d5"]
+[ext_resource type="Texture2D" uid="uid://blopi47tra32j" path="res://assets/chicken/chicken_sit_strip4.png" id="13_toc35"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvgvl"]
 
@@ -110,6 +112,22 @@ region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_is1m2"]
 atlas = ExtResource("7_7ume2")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds1rp"]
+atlas = ExtResource("13_toc35")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w65qb"]
+atlas = ExtResource("13_toc35")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b26sv"]
+atlas = ExtResource("13_toc35")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4ooi"]
+atlas = ExtResource("13_toc35")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sxpok"]
@@ -250,6 +268,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ds1rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w65qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b26sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4ooi")
+}],
+"loop": true,
+"name": &"chicken_sit",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_sxpok")
 }, {
 "duration": 1.0,
@@ -308,6 +343,11 @@ script = ExtResource("6_mj5gb")
 chicken = NodePath("../..")
 visual = NodePath("../../Visual")
 
+[node name="ChickenSit" type="Node" parent="StateMachine" node_paths=PackedStringArray("chicken", "visual")]
+script = ExtResource("7_v4h6b")
+chicken = NodePath("../..")
+visual = NodePath("../../Visual")
+
 [node name="MouseArea" type="Area2D" parent="."]
 position = Vector2(0, -10)
 
@@ -317,7 +357,8 @@ shape = SubResource("CircleShape2D_dvgvl")
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_b8yyq")
-animation = &"chicken_land"
+animation = &"chicken_sit"
+frame_progress = 0.278812
 
 [node name="VisibleClickableArea" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(12, 0, 12, -22, -12, -22, -12, 0)
